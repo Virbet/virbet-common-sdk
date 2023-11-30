@@ -1,0 +1,5 @@
+class Example {
+	companion object {
+		const val exampleJwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ2aXJiZXQtYXVkaWVuY2UiLCJpc3MiOiJodHRwczovL3ZpcmJldC5pbyIsInRva2VuIjoiQXYwV0FobERmTDIzS0FSajVqcHVzMlIxNmpCQnpjQkw0SWdxYlBtN2JYa0RqMGZRWjdRSG9neHhXcWxOQndJU2lKUkp3eDlNd3dMU3FzMmJ3Z0gyQ3ciLCJleHAiOjE3MDExMjU2MDN9.y5MduivRSuXXFjyg3LE3PCbb6L6T5BEAwgxUvhfrZo0"
+	}
+}
