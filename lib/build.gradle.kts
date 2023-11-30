@@ -8,7 +8,11 @@ import java.util.*
  * For more details on building Java & JVM projects, please refer to https://docs.gradle.org/8.4/userguide/building_java_projects.html in the Gradle documentation.
  * This project uses @Incubating APIs which are subject to change.
  */
-val projectProperties = readProperties(file("../project.properties"))
+val projectProperties = file("../project.properties").let {
+    if (it.exists()) {
+        readProperties(it)
+    } else null
+}
 
 fun readProperties(propertiesFile: File) = Properties().apply {
     propertiesFile.inputStream().use { fis ->
@@ -94,8 +98,8 @@ publishing {
             isAllowInsecureProtocol = true
 
             credentials {
-                username = projectProperties.getProperty("mavenCredentialsLogin")
-                password = projectProperties.getProperty("mavenCredentialsPassword")
+                username = projectProperties?.getProperty("mavenCredentialsLogin")
+                password = projectProperties?.getProperty("mavenCredentialsPassword")
             }
         }
     }
