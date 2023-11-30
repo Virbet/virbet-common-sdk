@@ -8,7 +8,6 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://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@maven.pkg.github.com/Virbet/virbet-common-sdk</url>
         </repository>
     </distributionManagement>
 </project>

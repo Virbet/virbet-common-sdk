@@ -92,8 +92,27 @@ publishing {
                 }
             }
         }
+
+
+        register<MavenPublication>("gitHub") {
+//            artifactId = "common-sdk"
+//            version = "0.0.1-snapshot-20"
+            from(components["java"])
+//            artifact(sourcesJar.get())
+//            pom {
+//                name.set("Virbet Common SDK")
+//            }
+        }
     }
     repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Virbet/virbet-common-sdk")
+            credentials {
+                username = "masloffvs"
+                password = "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"
+            }
+        }
         maven {
             name = "reposiliteRepositoryReleases"
             url = uri("http://31.214.157.126:83/releases")
