@@ -52,7 +52,7 @@ dependencies {
     api("com.aventrix.jnanoid:jnanoid:2.0.0")
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation("com.auth0.android:jwtdecode:2.0.2")
+//    implementation("com.auth0.android:jwtdecode:2.0.2")
     implementation("com.auth0:java-jwt:4.4.0")
 	  implementation(kotlin("stdlib-jdk8"))
 }
