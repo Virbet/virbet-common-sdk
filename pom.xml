@@ -1,0 +1,12 @@
+<project>
+    <modelVersion>0.0.1-snapshot-20</modelVersion>
+    <artifactId>common-sdk</artifactId>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/octocat/hello-world</url>
+        </repository>
+    </distributionManagement>
+</project>
