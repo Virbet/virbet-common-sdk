@@ -81,13 +81,15 @@ publishing {
 //
 //        }
 
-        register<MavenPublication>("reposiliteRepositoryReleases") {
-            artifactId = "common-sdk"
-            version = "0.0.1-snapshot-20"
-            from(components["java"])
-            artifact(sourcesJar.get())
-            pom {
-                name.set("Virbet Common SDK")
+        projectProperties?.apply {
+            register<MavenPublication>("reposiliteRepositoryReleases") {
+                artifactId = "common-sdk"
+                version = "0.0.1-snapshot-20"
+                from(components["java"])
+                artifact(sourcesJar.get())
+                pom {
+                    name.set("Virbet Common SDK")
+                }
             }
         }
     }
