@@ -47,6 +47,7 @@ fun main() {
 
 	metric(10, true) {
 		client
+
 			.login(KtorAuthThoughIdKey(""))
 			.callInForeground()
 	}.printResults()

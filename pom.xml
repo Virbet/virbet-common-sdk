@@ -1,12 +1,14 @@
 <project>
-    <modelVersion>0.0.1-snapshot-20</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>virbet</groupId>
     <artifactId>common-sdk</artifactId>
+    <version>mvn-test</version>
 
     <distributionManagement>
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/octocat/hello-world</url>
+            <url>https://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@maven.pkg.github.com/Virbet/virbet-common-sdk</url>
         </repository>
     </distributionManagement>
 </project>
