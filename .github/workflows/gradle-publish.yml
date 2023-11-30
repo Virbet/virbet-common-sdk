@@ -7,9 +7,7 @@
 
 name: Gradle Package
 
-on:
-  release:
-    types: [created]
+on: [push]
 
 jobs:
   build:
@@ -42,4 +40,4 @@ jobs:
         arguments: publish
       env:
         USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TOKEN: 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
