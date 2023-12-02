@@ -16,16 +16,15 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.URL
 import kotlin.concurrent.thread
-import kotlin.system.measureTimeMillis
 import kotlin.time.DurationUnit
 import kotlin.time.measureTime
-import kotlin.time.measureTimedValue
 
 /**
  * Класс `RetrofitFactory` представляет собой фабрику для создания экземпляра Retrofit и соответствующего сервиса.
  */
 class RetrofitFactory : AbstractSingletonFactory() {
-	companion object : ICommonSingletonFactoryStatic<Companion.RetrofitFactoryResult>  {
+	companion object :
+		ICommonSingletonFactoryStatic<Companion.RetrofitFactoryResult> {
 		private var callCount = 0
 		private var instance: Retrofit? = null
 		private var service: RetrofitInterfaceMain? = null

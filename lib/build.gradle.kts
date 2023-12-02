@@ -74,17 +74,10 @@ testing {
 
 publishing {
     publications {
-//        myLib(MavenPublication) {
-//            from components.java
-//        }
-//        Library(MavenPublication) {
-//
-//        }
-
         projectProperties?.apply {
             register<MavenPublication>("reposiliteRepositoryReleases") {
                 artifactId = "common-sdk"
-                version = "snapshot-29"
+                version = "snapshot-30"
 
                 from(components["java"])
                 artifact(sourcesJar.get())
