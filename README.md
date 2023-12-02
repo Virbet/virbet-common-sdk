@@ -1,26 +1,43 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-</head>
-<body>
+## VirbetCommonSDK
+**VirbetCommonSDK** предоставляет удобные инструменты для взаимодействия с событиями и API Virbet.
 
-<h1>VirbetCommonSDK</h1>
+## Установка
+Для подключения `VirbetCommonSDK` к вашему проекту, добавьте следующий блок в файл `build.gradle`:
 
-<p><code>VirbetCommonSDK</code> - это класс предоставляющий общую функциональность для взаимодействия с сервисами Virbet. Он включает в себя объект-компаньон, реализующий интерфейс <code>ICommonBuiltInfo</code>, который содержит информацию о версии SDK, тексте версии и времени сборки.</p>
+```groovy
+repositories {
+    maven {
+        url = uri("http://31.214.157.126:83/releases")
+        isAllowInsecureProtocol = true
+    }
+}
 
-<h3>
-Оглавление
-</h3>
+dependencies {
+    implementation("virbet:common-sdk:snapshot-30")
+}
+```
 
-<ul>
- <li>
-    <a href="file://./docs/ru/CommonBuiltInfo.md">CommonBuiltInfo</a>
-    Информация о сборке SDK
- </li>
-</ul>
+### EventsProvider
 
-</body>
-</html>
+Класс `EventsProvider` облегчает работу с событиями. Используйте его для выполнения запросов к API Virbet и получения информации о событиях.
+
+```kotlin
+val events = EventsProvider(URL("https://.../"))
+  .queryCall(
+    from (Sport.FOOTBALL) select {  
+
+    }
+  )
+
+println(events)
+```
+
+<hr/>
+
+### RetrofitFactory
+
+`RetrofitFactory` предоставляет готовые к использованию сервисы Retrofit для работы с API Virbet. Используйте его для выполнения HTTP-запросов к серверу.
+
+```kotlin
+RetrofitFactory.getServiceInstance("https://...")
+```

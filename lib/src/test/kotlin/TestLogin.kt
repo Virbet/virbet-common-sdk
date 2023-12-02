@@ -52,6 +52,9 @@ fun main() {
 			.callInForeground()
 	}.printResults()
 
+	RetrofitFactory
+		.getServiceInstance("https://...")
+
 
 //	metric(100, true) {
 //		client
