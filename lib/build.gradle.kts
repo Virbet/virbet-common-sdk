@@ -54,7 +54,7 @@ dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
 //    implementation("com.auth0.android:jwtdecode:2.0.2")
     implementation("com.auth0:java-jwt:4.4.0")
-	  implementation(kotlin("stdlib-jdk8"))
+//	  implementation(kotlin("stdlib-jdk8"))
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
@@ -84,7 +84,8 @@ publishing {
         projectProperties?.apply {
             register<MavenPublication>("reposiliteRepositoryReleases") {
                 artifactId = "common-sdk"
-                version = "0.0.1-snapshot-20"
+                version = "snapshot-29"
+
                 from(components["java"])
                 artifact(sourcesJar.get())
                 pom {
@@ -94,7 +95,7 @@ publishing {
         }
 
 
-        register<MavenPublication>("gitHub") {
+        register<MavenPublication>("gpr") {
 //            artifactId = "common-sdk"
 //            version = "0.0.1-snapshot-20"
             from(components["java"])

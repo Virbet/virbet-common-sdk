@@ -3,6 +3,7 @@ package org.wireforce.virbet.dto
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
+import org.wireforce.virbet.Built.HTTP_VERSION_TEXT
 import org.wireforce.virbet.classes.AbstractKtorDto
 
 /**
@@ -16,4 +17,5 @@ import org.wireforce.virbet.classes.AbstractKtorDto
 data class KtorResponse<A : AbstractKtorDto>(
 	val data: A? = null,
 	@Contextual val status: HttpStatusCode = HttpStatusCode.OK,
+	val v: String = HTTP_VERSION_TEXT
 ) : AbstractKtorDto()

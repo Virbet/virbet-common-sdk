@@ -1,6 +1,7 @@
 package org.wireforce.virbet.factory
 
 import io.ktor.http.*
+import org.wireforce.virbet.Built
 import org.wireforce.virbet.classes.AbstractKtorDto
 import org.wireforce.virbet.classes.AbstractKtorDto.Companion.toPrettyJson
 import org.wireforce.virbet.classes.AbstractSingletonFactory
@@ -15,6 +16,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.URL
 import kotlin.concurrent.thread
+import kotlin.system.measureTimeMillis
+import kotlin.time.DurationUnit
+import kotlin.time.measureTime
+import kotlin.time.measureTimedValue
 
 /**
  * Класс `RetrofitFactory` представляет собой фабрику для создания экземпляра Retrofit и соответствующего сервиса.
@@ -26,6 +31,8 @@ class RetrofitFactory : AbstractSingletonFactory() {
 		private var service: RetrofitInterfaceMain? = null
 
 		private var defaultDebugUrl = "http://localhost:8080"
+
+		const val DEBUG_HOST = "http://localhost:8080"
 
 		private fun <T:AbstractKtorDto> getDefaultHandlerCaller() = CallResults<T> { result ->
 			LoggerFactory.getInstance().apply {
@@ -89,38 +96,57 @@ class RetrofitFactory : AbstractSingletonFactory() {
 
 			val response = execute()
 
-			if (response.isSuccessful) {
-				onSuccess.invoke(
-					RequestApiResult(
-						response.isSuccessful,
-						HttpStatusCode.fromValue(response.code()),
-						response.body()?.data,
-						null
+			val requestTime = measureTime {
+				if (response.isSuccessful) {
+					if (response.body()?.v != Built.HTTP_VERSION_TEXT) {
+						LoggerFactory.getInstance().warning("[F:RequestApiResult] ATTENTION!! Warning about possible incompatibility.")
+						LoggerFactory.getInstance().warning("[F:RequestApiResult] Your version of SDK=${Built.HTTP_VERSION_TEXT}")
+						LoggerFactory.getInstance().warning("[F:RequestApiResult] Actual version SDK=${response.body()?.v}")
+					}
+
+					onSuccess.invoke(
+						RequestApiResult(
+							response.isSuccessful,
+							HttpStatusCode.fromValue(response.code()),
+							response.body()?.data,
+							null
+						)
 					)
-				)
 
-			} else {
-				val errorData = response.errorBody()?.string()
+				} else {
+					val errorData = response.errorBody()?.string()
 
-				if (!errorData.isNullOrEmpty() && errorData.isNotBlank()) {
-					return onError.invoke(
+					if (!errorData.isNullOrEmpty() && errorData.isNotBlank()) {
+						val out = try {
+							GsonFactory.getInstance().fromJson(errorData, KtorResponseError::class.java)
+						} catch(e: Throwable) {
+							e.printStackTrace()
+							null
+						}
+
+						return onError.invoke(
+							RequestApiResult(
+								false,
+								HttpStatusCode.fromValue(response.code()),
+								out?.data,
+								null
+							)
+						)
+					}
+
+					onError.invoke(
 						RequestApiResult(
 							false,
 							HttpStatusCode.fromValue(response.code()),
-							GsonFactory.getInstance().fromJson(errorData, KtorResponseError::class.java).data,
+							null,
 							null
 						)
 					)
 				}
+			}
 
-				onError.invoke(
-					RequestApiResult(
-						false,
-						HttpStatusCode.fromValue(response.code()),
-						null,
-						null
-					)
-				)
+			if (Built.IS_SNAPSHOT) {
+				LoggerFactory.getInstance().info("[NetStat] Call (method:${this.request().method()}) '${this.request().url()}' for ${requestTime.toDouble(DurationUnit.SECONDS)} seconds")
 			}
 		}
 

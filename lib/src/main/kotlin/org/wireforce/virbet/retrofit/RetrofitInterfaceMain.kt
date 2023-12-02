@@ -4,6 +4,7 @@ import com.aventrix.jnanoid.jnanoid.NanoIdUtils
 import org.jetbrains.annotations.NotNull
 import org.wireforce.virbet.classes.Constants
 import org.wireforce.virbet.classes.ContentLanguage
+import org.wireforce.virbet.classes.ESL
 import org.wireforce.virbet.classes.Sport
 import org.wireforce.virbet.dto.*
 import retrofit2.Call
@@ -121,4 +122,15 @@ interface RetrofitInterfaceMain {
 		@Query("limit") limit: Int = Constants.RETROFIT_DEFAULT_ZIPPED_LIMIT,
 		@Query("offset") offset: Int = Constants.RETROFIT_DEFAULT_ZIPPED_OFFSET,
 	): Call<KtorResponse<KtorEventsRequest<KtorEventSlim>>>
+
+	@POST("/events")
+	@Suppress("Unused")
+	@Headers("Content-Type: application/json;charset=UTF-8")
+	fun getEvents(
+		@Header("Authorization") jwtBearerToken: String,
+		@Header("Content-Language") requiredContentLanguage: ContentLanguage = ContentLanguage.EN,
+		@Body body: KtorEventsCursor,
+		@Query("limit") limit: Int = Constants.RETROFIT_DEFAULT_ZIPPED_LIMIT,
+		@Query("offset") offset: Int = Constants.RETROFIT_DEFAULT_ZIPPED_OFFSET,
+	): Call<KtorResponse<KtorEventsRequest<KtorEventFully>>>
 }
