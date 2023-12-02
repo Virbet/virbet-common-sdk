@@ -1,4 +1,4 @@
-package org.wireforce.virbet.retrofit;
+package org.wireforce.virbet.jvm.retrofit;
 
 import kotlin.Suppress;
 import org.wireforce.virbet.dto.*;
@@ -16,7 +16,7 @@ import retrofit2.http.*;
  * KtorResponse<KtorIdKeyRelease> response = call.execute().body();
  * }</pre>
  */
-interface RetrofitInterfaceMain {
+public interface RetrofitInterfaceMain {
     /**
      * Выполняет GET-запрос для получения ID ключа.
      * ID ключ предназначен для представления пользователя без логина и пароля,
