@@ -1,19 +1,38 @@
 ## VirbetCommonSDK
 **VirbetCommonSDK** предоставляет удобные инструменты для взаимодействия с событиями и API Virbet.
 
+## Сборка
+
+Перед началом работы вам необходимо собрать пакет в ваш репозиторий MavenLocal
+
+```bash
+git clone https://github.com/Virbet/virbet-common-sdk
+
+cd virbet-common-sdk
+
+gradle publishToMavenLocal # for Linux
+sh gradlew publishToMavenLocal # for Mac
+./gradlew.bat publishToMavenLocal # For Windows
+ 
+```
+
+При сборке в терминале вы сможете найти строки, которые уведомят вас о самой последней версии библиотеки и способах ее подключения:
+
+```
+Thank you for compiling the library! Latest version of the library = snapshot-31
+You can connect the library through: implementation("virbet:common-sdk:snapshot-31")
+```
+
 ## Установка
 Для подключения `VirbetCommonSDK` к вашему проекту, добавьте следующий блок в файл `build.gradle`:
 
 ```groovy
 repositories {
-    maven {
-        url = uri("http://31.214.157.126:83/releases")
-        isAllowInsecureProtocol = true
-    }
+    mavenLocal()
 }
 
 dependencies {
-    implementation("virbet:common-sdk:snapshot-30")
+    implementation("virbet:common-sdk:LATEST_VERSION")
 }
 ```
 

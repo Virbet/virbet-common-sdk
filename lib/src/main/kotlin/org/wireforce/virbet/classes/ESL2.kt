@@ -100,6 +100,7 @@ class ESL2(private val sports: List<Sport>) {
 		}
 
 		@Suppress("Unused")
+		@JvmName("gtDoubleKotlin")
 		infix fun Named.gt(value: OperationsGroup<Double>): Operation<Any> {
 			return Operation(
 				this,
@@ -109,6 +110,7 @@ class ESL2(private val sports: List<Sport>) {
 		}
 
 		@Suppress("Unused")
+		@JvmName("ltIntKotlin")
 		infix fun Named.lt(value: OperationsGroup<Int>): Operation<Any> {
 			return Operation(
 				this,
@@ -118,6 +120,7 @@ class ESL2(private val sports: List<Sport>) {
 		}
 
 		@Suppress("Unused")
+		@JvmName("gtIntKotlin")
 		infix fun Named.gt(value: OperationsGroup<Int>): Operation<Any> {
 			return Operation(
 				this,

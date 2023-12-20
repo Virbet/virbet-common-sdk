@@ -45,6 +45,7 @@ abstract class Factor {
 		 * @return Список значений win group.
 		 */
 		@Suppress("Unused")
+		@JvmName("getWinsGroupKotlin")
 		fun getWinsGroup() = winsGroup
 
 		/**
@@ -53,6 +54,7 @@ abstract class Factor {
 		 * @return Список значений totals group.
 		 */
 		@Suppress("Unused")
+		@JvmName("getTotalsGroupKotlin")
 		fun getTotalsGroup() = totalsGroup
 
 		/**
@@ -61,6 +63,7 @@ abstract class Factor {
 		 * @return Список всех значений фабрик.
 		 */
 		@Suppress("Unused")
+		@JvmName("getAllFactoriesKotlin")
 		fun getAllFactories() =
 			listOfNotNull(
 				totalsGroup,

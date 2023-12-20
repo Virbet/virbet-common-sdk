@@ -22,12 +22,10 @@ fun readProperties(propertiesFile: File) = Properties().apply {
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-//    id("org.jetbrains.kotlin.jvm") version "1.9.10"
     kotlin("jvm") version "1.9.10"
     kotlin("plugin.serialization") version "1.9.20"
 
     id("maven-publish")
-//    kotlin("kotlin-multiplatform")
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
@@ -52,9 +50,7 @@ dependencies {
     api("com.aventrix.jnanoid:jnanoid:2.0.0")
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-//    implementation("com.auth0.android:jwtdecode:2.0.2")
     implementation("com.auth0:java-jwt:4.4.0")
-//	  implementation(kotlin("stdlib-jdk8"))
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
@@ -75,9 +71,28 @@ testing {
 publishing {
     publications {
         projectProperties?.apply {
+            register<MavenPublication>("this") {
+                artifactId = "common-sdk"
+                version = "snapshot-31"
+
+                val encodedString = "X18gICAgIF9fXyAgICAgIF9fX18gICAgICAgXyAgICAgX19fXyAgX19fXyAgXyAgX18KXCBcICAgLyAoXylfIF9ffCBfXyApICBfX198IHxfICAvIF9fX3x8ICBfIFx8IHwvIC8KIFwgXCAvIC98IHwgJ19ffCAgXyBcIC8gXyBcIF9ffCBcX19fIFx8IHwgfCB8ICcgLwogIFwgViAvIHwgfCB8ICB8IHxfKSB8ICBfXy8gfF8gICBfX18pIHwgfF98IHwgLiBcCiAgIFxfLyAgfF98X3wgIHxfX19fLyBcX19ffFxfX3wgfF9fX18vfF9fX18vfF98XF9c"
+                val decodedString: String = String(Base64.getDecoder().decode(encodedString))
+
+                println(decodedString)
+                println()
+                println("Thank you for compiling the library! Latest version of the library = $version")
+                println("You can connect the library through: implementation(\"$groupId:$artifactId:$version\")")
+                println("Dont forget about:")
+                println("repositories {\n" +
+                    "+    mavenLocal()\n" +
+                    "}")
+
+                println("In your project")
+            }
+
             register<MavenPublication>("reposiliteRepositoryReleases") {
                 artifactId = "common-sdk"
-                version = "snapshot-30"
+                version = "snapshot-31"
 
                 from(components["java"])
                 artifact(sourcesJar.get())
@@ -105,16 +120,6 @@ publishing {
             credentials {
                 username = "masloffvs"
                 password = "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"
-            }
-        }
-        maven {
-            name = "reposiliteRepositoryReleases"
-            url = uri("http://31.214.157.126:83/releases")
-            isAllowInsecureProtocol = true
-
-            credentials {
-                username = projectProperties?.getProperty("mavenCredentialsLogin")
-                password = projectProperties?.getProperty("mavenCredentialsPassword")
             }
         }
     }
