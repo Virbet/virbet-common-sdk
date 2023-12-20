@@ -13,7 +13,13 @@ cd virbet-common-sdk
 gradle publishToMavenLocal # for Linux
 sh gradlew publishToMavenLocal # for Mac
 ./gradlew.bat publishToMavenLocal # For Windows
- 
+```
+
+PS: Если вам нужно просто собрать библиотеку, без ее публикации, воспользуйтесь командами:
+```bash
+gradle build -x test  # for Linux
+sh gradlew build -x test # for Mac
+./gradlew.bat build -x test # For Windows
 ```
 
 При сборке в терминале вы сможете найти строки, которые уведомят вас о самой последней версии библиотеки и способах ее подключения:
