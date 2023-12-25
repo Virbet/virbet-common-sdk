@@ -35,11 +35,11 @@ dependencies {
     implementation("com.auth0:java-jwt:4.4.0")
 }
 
-val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
-}
-
+//val sourcesJar by tasks.registering(Jar::class) {
+//    archiveClassifier.set("sources")
+//    from(sourceSets.main.get().allSource)
+//}
+//
 
 //publishing {
 //    publications {
