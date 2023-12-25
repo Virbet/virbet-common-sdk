@@ -41,28 +41,28 @@ val sourcesJar by tasks.registering(Jar::class) {
 }
 
 
-publishing {
-    publications {
-        register<MavenPublication>("snapshotLatest") {
-            artifactId = "common-sdk"
-            version = "snapshot-latest"
-
-            //val encodedString = "X18gICAgIF9fXyAgICAgIF9fX18gICAgICAgXyAgICAgX19fXyAgX19fXyAgXyAgX18KXCBcICAgLyAoXylfIF9ffCBfXyApICBfX198IHxfICAvIF9fX3x8ICBfIFx8IHwvIC8KIFwgXCAvIC98IHwgJ19ffCAgXyBcIC$
-            //val decodedString: String = String(Base64.getDecoder().decode(encodedString))
-
-            //println(decodedString)
-            //println()
-            println("Thank you for compiling the library! Latest version of the library = $version")
-            println("You can connect the library through: implementation(\"$groupId:$artifactId:$version\")")
-            println("Dont forget about:")
-            println("repositories {\n" +
-                "+    mavenLocal()\n" +
-                "}")
-
-            println("In your project")
-        }
-    }
-}
+//publishing {
+//    publications {
+//        register<MavenPublication>("snapshotLatest") {
+//            artifactId = "common-sdk"
+//            version = "snapshot-latest"
+//
+//            //val encodedString = "X18gICAgIF9fXyAgICAgIF9fX18gICAgICAgXyAgICAgX19fXyAgX19fXyAgXyAgX18KXCBcICAgLyAoXylfIF9ffCBfXyApICBfX198IHxfICAvIF9fX3x8ICBfIFx8IHwvIC8KIFwgXCAvIC98IHwgJ19ffCAgXyBcIC$
+//            //val decodedString: String = String(Base64.getDecoder().decode(encodedString))
+//
+//            //println(decodedString)
+//            //println()
+//            println("Thank you for compiling the library! Latest version of the library = $version")
+//            println("You can connect the library through: implementation(\"$groupId:$artifactId:$version\")")
+//            println("Dont forget about:")
+//            println("repositories {\n" +
+//                "+    mavenLocal()\n" +
+//                "}")
+//
+//            println("In your project")
+//        }
+//    }
+//}
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
