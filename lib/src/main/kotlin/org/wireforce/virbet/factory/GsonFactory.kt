@@ -3,7 +3,7 @@ package org.wireforce.virbet.factory
 import com.google.gson.*
 import kotlinx.datetime.Instant
 import org.wireforce.virbet.classes.AbstractSingletonFactory
-import org.wireforce.virbet.interfaces.ICommonSingletonFactoryStatic
+import org.wireforce.virbet.jvm.interfaces.ICommonSingletonFactoryStatic
 
 /**
  * Фабрика для создания и предоставления единственного экземпляра [Gson].

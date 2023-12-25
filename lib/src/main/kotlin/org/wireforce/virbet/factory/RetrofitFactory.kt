@@ -9,7 +9,7 @@ import org.wireforce.virbet.dto.KtorErrorBody
 import org.wireforce.virbet.dto.KtorResponse
 import org.wireforce.virbet.dto.KtorResponseError
 import org.wireforce.virbet.factory.RetrofitFactory.Companion.CallResults
-import org.wireforce.virbet.interfaces.ICommonSingletonFactoryStatic
+import org.wireforce.virbet.jvm.interfaces.ICommonSingletonFactoryStatic
 import org.wireforce.virbet.jvm.retrofit.RetrofitInterfaceMain
 import retrofit2.Call
 import retrofit2.Retrofit

@@ -2,7 +2,7 @@ package org.wireforce.virbet.factory
 
 import okhttp3.OkHttpClient
 import org.wireforce.virbet.classes.AbstractSingletonFactory
-import org.wireforce.virbet.interfaces.ICommonSingletonFactoryStatic
+import org.wireforce.virbet.jvm.interfaces.ICommonSingletonFactoryStatic
 
 /**
  * Фабрика для создания и предоставления единственного экземпляра [OkHttpClient].
@@ -13,7 +13,8 @@ class OkHttpFactory : AbstractSingletonFactory() {
 	/**
 	 * Компаньон-объект, предоставляющий статические методы для работы с фабрикой [OkHttpFactory].
 	 */
-	companion object : ICommonSingletonFactoryStatic<OkHttpClient> {
+	companion object :
+		ICommonSingletonFactoryStatic<OkHttpClient> {
 
 		/**
 		 * Лениво инициализированный экземпляр [OkHttpClient] с настройками по умолчанию.

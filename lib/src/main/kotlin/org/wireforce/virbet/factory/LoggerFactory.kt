@@ -2,7 +2,7 @@ package org.wireforce.virbet.factory
 
 import org.wireforce.virbet.classes.AbstractSingletonFactory
 import org.wireforce.virbet.classes.LogFormatter
-import org.wireforce.virbet.interfaces.ICommonSingletonFactoryStatic
+import org.wireforce.virbet.jvm.interfaces.ICommonSingletonFactoryStatic
 import java.util.logging.ConsoleHandler
 import java.util.logging.Logger
 

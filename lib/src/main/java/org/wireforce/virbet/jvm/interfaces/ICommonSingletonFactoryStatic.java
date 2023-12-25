@@ -1,4 +1,4 @@
-package org.wireforce.virbet.interfaces;
+package org.wireforce.virbet.jvm.interfaces;
 
 /**
  * Интерфейс, предоставляющий контракт для фабрик, ответственных за создание и предоставление
