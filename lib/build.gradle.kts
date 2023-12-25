@@ -35,10 +35,12 @@ dependencies {
     implementation("com.auth0:java-jwt:4.4.0")
 }
 
-//val sourcesJar by tasks.registering(Jar::class) {
-//    archiveClassifier.set("sources")
-//    from(sourceSets.main.get().allSource)
-//}
+val sourcesJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+}
+
+
 //
 
 //publishing {
@@ -66,6 +68,7 @@ dependencies {
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
+    withSourcesJar()
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(11))
     }
