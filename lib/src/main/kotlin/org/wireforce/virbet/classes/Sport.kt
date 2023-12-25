@@ -54,6 +54,16 @@ enum class Sport {
      */
     ATHLETICS,
 
+    HOCKEY,
+
+    FUTSAL,
+
+    HANDBALL,
+
+    ESPORTS,
+
+    BANDY,
+
     /**
      * Бадминтон - индивидуальный или парный вид спорта с использованием летящего мяча и ракеток.
      */
