@@ -8,4 +8,6 @@ import org.wireforce.virbet.interfaces.IKtorRequestLinkWithIDKey
 @Suppress("Unused")
 data class KtorEventTeam(
 	val name: String,
+	val internalId: String,
+	val logotypeHttpUrl: String,
 ) : AbstractKtorDto()
