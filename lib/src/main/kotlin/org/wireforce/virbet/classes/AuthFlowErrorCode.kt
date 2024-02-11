@@ -33,5 +33,23 @@ enum class AuthFlowErrorCode(val code: Int) {
 	 * Слишком слабый пароль. Код ошибки: 501.
 	 */
 	@Suppress("unused")
-	PASSWORD_TOO_WEAK(501)
+	PASSWORD_TOO_WEAK(501),
+
+	/**
+	 * Почта слишком большая
+	 */
+	@Suppress("unused")
+	EMAIL_TOO_LONG(601),
+
+	/**
+	 * Слишком много или нет вовсе символов @ в поле email
+	 */
+	@Suppress("unused")
+	INCORRECT_AT_SIGN(602),
+
+	/**
+	 * Почта уже зарегистрирована
+	 */
+	@Suppress("unused")
+	EMAIL_READY_EXISTS(603),
 }
