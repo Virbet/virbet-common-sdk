@@ -9,6 +9,7 @@ import org.wireforce.virbet.interfaces.IKtorRequestLinkWithIDKey
 data class KtorCreateUser(
 	val login: String,
 	val password: String,
+	val email: String?,
 
 	override val idKey: String,
 ) : AbstractKtorDto(), IKtorRequestLinkWithIDKey
